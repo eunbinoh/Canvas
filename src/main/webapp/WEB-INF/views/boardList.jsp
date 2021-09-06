@@ -68,7 +68,7 @@ a:link { color: black; text-decoration: none;}
 a:visited { color: black; text-decoration: none;}
 a:hover { color: gray; text-decoration: none;}
 .pNo:link{color: black; text-decoration: none; font-size:15px;}
-.pNo:hover{color: gray; background-color: white; padding:5px 5px 5px 5px; border-radius:20px; font-size:15px; text-decoration: none;}
+.pNo:hover{color: gray; background-color: white; text-align:center; padding:5px 5px 5px 5px; border-radius:20px; font-size:15px; text-decoration: none;}
 #pagingTr {
 	background-color: rgba(160, 160, 158, 0.726);
 	color: black; 
@@ -84,9 +84,9 @@ a:hover { color: gray; text-decoration: none;}
 </head>
 <body>
 	
-	<h1 align="center" style="margin:3em"> - My Canvas Board - </h1>
+	<h1 align="center" style="margin:3em"> - Eunbi's Canvas Board - </h1>
 	<h3 align="left" style="margin:-2.5em 18em; color:gray;"> &nbsp; Total : ${ pi.listCount }</h3>
-	<button onclick="location.href='binsertView.bo';" class="writeBtn">글쓰기</button>
+	<button onclick="location.href='boardInsertView';" class="writeBtn">글쓰기</button>
 	<table id="tb">
 		<thead>
 			<tr style="background: #FFE674;">
@@ -106,7 +106,7 @@ a:hover { color: gray; text-decoration: none;}
 					<c:param name="boardId" value="${ bo.boardId }"/>
 					<c:param name="page" value="${ pi.currentPage }"/>
 				</c:url>
-				<a href="${ bdetail }">${ bo.boardTitle }</a>
+				<a id="selectBoard" href="${ bdetail }">${ bo.boardTitle }</a>
 			</td>
 			<td align="center">${ bo.boardWriter }</td>
 			<td align="center">${ bo.boardCreateDate }</td>
@@ -132,7 +132,7 @@ a:hover { color: gray; text-decoration: none;}
 				<!-- 페이지 번호 -->
 				<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
 					<c:if test="${ p eq pi.currentPage }">
-						&nbsp; ${ p } &nbsp;
+						${ p }
 					</c:if>
 					<c:if test="${ p ne pi.currentPage }">
 						<c:url var="Pagination" value="boardList">
@@ -157,5 +157,6 @@ a:hover { color: gray; text-decoration: none;}
 		</tr>
 		</tbody>
 	</table>
+
 </body>
 </html>

@@ -8,11 +8,11 @@
 </head>
 <style>
 	#goBtn {
-		z-index: 50; color: #fff; font-size: 20px; border: 2px solid #fff;
+		z-index: 50; color: #FFED86; font-size: 20px; border: 2px solid #FFED86;
 		padding: 12px 24px; border-radius: 5px; cursor: pointer; background-color: rgba(0, 0, 0, 0);
 	}
 	#goBtn:hover {
-		color: #ff6868; font-size: 20px; border: 2px solid #ff6868;
+		color: gray; font-size: 20px; border: 2px solid gray;
 		padding: 12px 24px; border-radius: 5px; cursor: pointer;
 	}
 	#iBtn {position: fixed; text-align: center}
