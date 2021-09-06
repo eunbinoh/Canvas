@@ -7,7 +7,7 @@
 	</select>
 	
 	<select id="getBoardList" resultMap="boardResultSet">
-		SELECT BOARD_ID, BOARD_TITLE, BOARD_WRITER, BOARD_CONTENT, BOARD_CREATE_DATE, BOARD_COUNT
+	   SELECT BOARD_ID, BOARD_TITLE, BOARD_WRITER, BOARD_CONTENT, BOARD_CREATE_DATE, BOARD_COUNT
 		 FROM BOARD
 		WHERE BOARD_STATUS='Y'
 		ORDER BY BOARD_ID DESC
@@ -26,26 +26,24 @@
 	</resultMap>
 	
 	
-	<!-- <insert id="insertBoard">
-		insert into board
-		values(seq_bid.nextval, #{boardTitle}, #{boardWriter}, #{boardContent},
-			#{originalFileName}, #{renameFileName}, default, sysdate, sysdate, default)
+	<insert id="insertBoard">
+		INSERT INTO BOARD
+		VALUES (SEQ_BID.NEXTVAL, #{boardTitle}, #{boardWriter}, #{boardContent},
+			   #{originalFileName}, NULL, DEFAULT, SYSDATE, SYSDATE, DEFAULT)
 	</insert>
-
-
-	<update id="addReadCount">
-		update board set board_count=board_count+1 where board_id=#{boardId}
+ 
+	<update id="upCount">
+		UPDATE BOARD SET BOARD_COUNT=BOARD_COUNT+1 WHERE BOARD_ID=#{boardId}
 	</update>
   	
   	<select id="selectBoard" resultMap="boardResultSet">
-  		select board_id, board_title, board_writer, nickname, board_content,
-				original_filename, rename_filename, board_count, board_create_date, board_modify_date, board_status
-		from board
-			 join member on (id=board_writer)
-		where board_id=#{boardId} and board_status='Y'
+  	   SELECT BOARD_ID, BOARD_TITLE, BOARD_WRITER, BOARD_CONTENT, ORIGINAL_FILENAME,
+			  BOARD_COUNT, BOARD_CREATE_DATE, BOARD_MODIFY_DATE, BOARD_STATUS
+		 FROM BOARD
+		WHERE BOARD_ID=#{boardId} AND BOARD_STATUS='Y'
   	</select>
   	
-  	
+<!--  	
   	<update id="updateBoard">
   		update board 
   		set board_title=#{boardTitle}, board_content=#{boardContent}, board_modify_date=sysdate,

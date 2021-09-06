@@ -13,6 +13,9 @@ public interface BoardDAO {
 
 	public int getPageCount();
 	public List<Board> getBoardList(RowBounds rb);
+	public int insertBoard(Board b);
+	public Board selectBoard(int boardId);
+	public int upCount(int boardId);
 
 
 
